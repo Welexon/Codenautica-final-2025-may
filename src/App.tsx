@@ -144,12 +144,13 @@ const App = () => {
     initializeApp();
   }, [user, fetchNotifications, fetchSolutions, fetchRequests]);
 
+  useEffect(() => {
     const { data: authListener } = supabase.auth.onAuthStateChange((event, session) => {
       console.log('Auth state change in App component:', event, session ? 'with session' : 'without session');
-      
+
       if (event === 'SIGNED_IN' && session) {
         console.log('User signed in, session exists');
-        
+
         // Check if we need to redirect
         setTimeout(() => {
           const currentPath = window.location.pathname;
@@ -158,9 +159,13 @@ const App = () => {
             window.location.href = '/dashboard';
           }
         }, 500);
+      }
+    });
+
+    return () => {
       authListener.subscription.unsubscribe();
     };
-  }, [navigate]);
+  }, []);
 
   return (
     <ErrorBoundary>
