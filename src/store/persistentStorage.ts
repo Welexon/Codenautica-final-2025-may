@@ -1,4 +1,4 @@
-import { get, set } from 'idb-keyval';
+import { get, set, del } from 'idb-keyval';
 
 export const persistentStorage = {
   async getItem(key: string): Promise<any> {
@@ -21,7 +21,7 @@ export const persistentStorage = {
 
   async removeItem(key: string): Promise<void> {
     try {
-      await set(key, null);
+      await del(key);
     } catch (error) {
       console.error('Error removing data:', error);
     }
