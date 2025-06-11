@@ -63,8 +63,8 @@ export const checkSupabaseConnection = async () => {
     
     console.log(`[${timestamp}] Checking Supabase connection...`);
     
-    // Simple query to check connection
-    const { data, error } = await supabase.from('profiles').select('id', { count: 'exact', head: true }).limit(1);
+    // Simple call that does not require RLS policies
+    const { error } = await supabase.auth.getSession();
     
     if (error) {
       console.error(`[${timestamp}] Supabase connection error during check:`, error.message);
