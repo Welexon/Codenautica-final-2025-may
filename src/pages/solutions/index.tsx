@@ -82,10 +82,10 @@ const Solutions = () => {
           </div>
         </div>
       ) : (
-        <div className="grid grid-cols-1 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-fr">
           {userSolutions.map((solution) => (
-            <div key={solution.id} className="bg-white shadow rounded-lg">
-              <div className="p-6">
+            <div key={solution.id} className="bg-white shadow rounded-lg flex flex-col h-full">
+              <div className="p-6 flex flex-col flex-grow">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center">
                     <Package className="h-10 w-10 text-blue-600" />
