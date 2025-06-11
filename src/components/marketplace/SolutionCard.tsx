@@ -31,7 +31,7 @@ const SolutionCard: React.FC<SolutionCardProps> = ({ solution, showActions = tru
         </div>
       </div>
       
-      <div className="p-6 flex flex-col flex-grow gap-4">
+      <div className="p-6 flex flex-col flex-1 space-y-4">
         <div className="flex items-center space-x-2">
           <Tag className="h-4 w-4 text-blue-700" />
           <span className="text-sm font-medium text-blue-700">{solution.category}</span>

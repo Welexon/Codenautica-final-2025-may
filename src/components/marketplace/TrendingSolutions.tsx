@@ -26,7 +26,7 @@ const TrendingSolutions: React.FC<TrendingSolutionsProps> = ({ solutions }) => {
       </div>
 
         {solutions && Array.isArray(solutions) && solutions.length > 0 ? (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 auto-rows-fr">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 auto-rows-fr items-stretch">
           {solutions.map((solution) => (
             <SolutionCard
               key={solution.id}
