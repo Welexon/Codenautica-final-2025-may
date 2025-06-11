@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { Star, Download, Users, Tag, ArrowUpRight } from 'lucide-react';
 import { Solution } from '../../types/marketplace';
 import { useAuthStore } from '../../store/authStore';
@@ -18,7 +18,7 @@ const SolutionCard: React.FC<SolutionCardProps> = ({ solution, showActions = tru
   };
 
   return (
-    <div className="bg-white rounded-xl shadow-sm hover:shadow-md transition-all duration-300 overflow-hidden group">
+    <div className="bg-white rounded-xl shadow-sm hover:shadow-md transition-all duration-300 overflow-hidden group flex flex-col h-full">
       <div className="relative">
         <img
           src={solution.image}
@@ -31,21 +31,21 @@ const SolutionCard: React.FC<SolutionCardProps> = ({ solution, showActions = tru
         </div>
       </div>
       
-      <div className="p-6">
-        <div className="flex items-center space-x-2 mb-2">
+      <div className="p-6 flex flex-col flex-grow gap-4">
+        <div className="flex items-center space-x-2">
           <Tag className="h-4 w-4 text-blue-700" />
           <span className="text-sm font-medium text-blue-700">{solution.category}</span>
         </div>
         
-        <h3 className="text-xl font-semibold mb-2 group-hover:text-blue-700 transition-colors">
+        <h3 className="text-xl font-semibold group-hover:text-blue-700 transition-colors line-clamp-2">
           {solution.title}
         </h3>
         
-        <p className="text-gray-600 mb-4 line-clamp-2">
+        <p className="text-gray-600 line-clamp-2">
           {solution.description}
         </p>
         
-        <div className="flex items-center justify-between mb-4">
+        <div className="flex items-center justify-between">
           <div className="flex items-center space-x-4 text-sm text-gray-500">
             <div className="flex items-center">
               <Download className="h-4 w-4 mr-1" />
@@ -78,7 +78,7 @@ const SolutionCard: React.FC<SolutionCardProps> = ({ solution, showActions = tru
         {showActions && (
           <button
             onClick={handleAction}
-            className="mt-4 w-full inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-blue-700 hover:bg-blue-800 transition-colors"
+            className="mt-auto w-full inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-blue-700 hover:bg-blue-800 transition-colors pt-4"
           >
             View Details
             <ArrowUpRight className="ml-2 h-4 w-4" />
