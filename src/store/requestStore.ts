@@ -1,8 +1,7 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
-import { supabase, handleSupabaseError } from '../lib/supabase';
+import { supabase, handleSupabaseError, checkSupabaseConnection } from '../lib/supabase';
 import { useActivityStore } from './activityStore';
-import { useNotificationStore } from './notificationStore';
 import { useNotificationStore } from './notificationStore';
 import { mockRequests } from '../data/mockData';
 import { v4 as uuidv4 } from 'uuid';
@@ -110,7 +109,6 @@ export const useRequestStore = create<RequestState>()(
             },
             requirements: Array.isArray(request.requirements) ? request.requirements : [],
             attachments: Array.isArray(request.attachments) ? request.attachments : [],
-            skills: Array.isArray(request.skills) ? request.skills : [],
             skills: Array.isArray(request.skills) ? request.skills : [],
             proposals: request.proposals?.length || 0
           }));
@@ -257,6 +255,3 @@ export const useRequestStore = create<RequestState>()(
     }
   )
 );
-
-// Import missing functions
-import { checkSupabaseConnection } from '../lib/supabase';
